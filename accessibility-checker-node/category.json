@@ -1,0 +1,197 @@
+{
+    "rules": [
+        {
+            "code": "1_1_1",
+            "description": "Non-text Content",
+            "category": "Visual Impairments",
+            "subcategory": [
+                "Blindness",
+                "Low Vision"
+            ]
+        },
+        {
+            "code": "1_2_1",
+            "description": "Audio-only and Video-only (Prerecorded)",
+            "category": "Auditory Impairments",
+            "subcategory": [
+                "Deafness",
+                "Hard of Hearing"
+            ]
+        },
+        {
+            "code": "1_2_2",
+            "description": "Captions (Prerecorded)",
+            "category": "Auditory Impairments",
+            "subcategory": [
+                "Deafness",
+                "Hard of Hearing"
+            ]
+        },
+        {
+            "code": "1_2_3",
+            "description": "Audio Description or Media Alternative (Prerecorded)",
+            "category": "Auditory Impairments",
+            "subcategory": [
+                "Deafness",
+                "Hard of Hearing"
+            ]
+        },
+        {
+            "code": "1_2_4",
+            "description": "Captions (Live)",
+            "category": "Auditory Impairments",
+            "subcategory": [
+                "Deafness",
+                "Hard of Hearing"
+            ]
+        },
+        {
+            "code": "1_2_5",
+            "description": "Audio Description (Prerecorded)",
+            "category": "Auditory Impairments",
+            "subcategory": [
+                "Deafness",
+                "Hard of Hearing"
+            ]
+        },
+        {
+            "code": "1_2_6",
+            "description": "Sign Language (Prerecorded)",
+            "category": "Auditory Impairments",
+            "subcategory": [
+                "Deafness",
+                "Hard of Hearing"
+            ]
+        },
+        {
+            "code": "1_2_7",
+            "description": "Extended Audio Description (Prerecorded)",
+            "category": "Auditory Impairments",
+            "subcategory": [
+                "Deafness",
+                "Hard of Hearing"
+            ]
+        },
+        {
+            "code": "1_2_8",
+            "description": "Media Alternative (Prerecorded)",
+            "category": "Auditory Impairments",
+            "subcategory": [
+                "Deafness",
+                "Hard of Hearing"
+            ]
+        },
+        {
+            "code": "1_2_9",
+            "description": "Live Audio Only",
+            "category": "Auditory Impairments",
+            "subcategory": [
+                "Deafness",
+                "Hard of Hearing"
+            ]
+        },
+        {
+            "code": "1_2_10",
+            "description": "Live Video Only",
+            "category": "Auditory Impairments",
+            "subcategory": [
+                "Deafness",
+                "Hard of Hearing"
+            ]
+        },
+        {
+            "code": "1_3_1",
+            "description": "Info and Relationships",
+            "category": [
+                "Visual Impairments",
+                "Cognitive Disabilities"
+            ],
+            "subcategory": [
+                "Blindness",
+                "Low Vision",
+                "Attention Disorders",
+                "Learning Disabilities"
+            ]
+        },
+        {
+            "code": "1_3_2",
+            "description": "Meaningful Sequence",
+            "category": [
+                "Visual Impairments",
+                "Cognitive Disabilities"
+            ],
+            "subcategory": [
+                "Blindness",
+                "Low Vision",
+                "Attention Disorders",
+                "Learning Disabilities"
+            ]
+        },
+        {
+            "code": "1_3_3",
+            "description": "Sensory Characteristics",
+            "category": [
+                "Visual Impairments",
+                "Cognitive Disabilities"
+            ],
+            "subcategory": [
+                "Blindness",
+                "Low Vision",
+                "Attention Disorders",
+                "Learning Disabilities"
+            ]
+        },
+        {
+            "code": "1_4_1",
+            "description": "Use of Color",
+            "category": "Visual Impairments",
+            "subcategory": [
+                "Blindness",
+                "Low Vision",
+                "Color Blindness"
+            ]
+        },
+        {
+            "code": "1_4_2",
+            "description": "Audio Control",
+            "category": "Auditory Impairments",
+            "subcategory": [
+                "Deafness",
+                "Hard of Hearing"
+            ]
+        },
+        {
+            "code": "1_4_3",
+            "description": "Contrast (Minimum)",
+            "category": "Visual Impairments",
+            "subcategory": [
+                "Blindness",
+                "Low Vision",
+                "Color Blindness"
+            ]
+        },
+        {
+            "code": "1_4_4",
+            "description": "Resize Text",
+            "category": [
+                "Visual Impairments",
+                "Cognitive Disabilities"
+            ],
+            "subcategory": [
+                "Blindness",
+                "Low Vision",
+                "Attention Disorders",
+                "Learning Disabilities"
+            ]
+        },
+        {
+            "code": "1_4_5",
+            "description": "Images of Text",
+            "category": "Visual Impairments",
+            "subcategory": [
+                "Blindness",
+                "Low Vision"
+            ]
+        }
+    ]
+}

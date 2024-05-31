@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessibility Check Results</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .container {
+      margin-top: 20px;
+    }
+
+    .url-card {
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .url-details {
+      padding: 15px;
+    }
+
+    .url-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .url-description {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .expand-button {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .expanded-details {
+      display: none;
+      padding: 15px;
+    }
+
+    .expanded-details p {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <% 
+        function getTotalIssuesCount(result) {
+            let totalIssues = 0;
+            Object.values(result).forEach((issues) => {
+                issues.issues.forEach((isu) => {
+                    totalIssues += 1;
+                });
+            }); 
+            return Number(totalIssues);
+        };
+        function getIssueImpact(issue) {
+            if (issue.type === 'error') {
+                return 'High';
+            } else if (issue.type === 'warning') {
+                return 'Medium';
+            } else if (issue.type === 'notice') {
+                return 'Low';
+            } else {
+                return 'Unknown';
+            }
+        } 
+    %>
+    <% if (result && Object.keys(result).length > 0) { %>
+    <% Object.entries(result).forEach(([url, data]) => { %>
+    <!-- Level 1: URL Card -->
+    <div class="url-card">
+      <div class="url-details">
+        <!-- Title -->
+        <h2 class="url-title">URL: <%= url %></h2>
+        <!-- Description -->
+        <p class="url-description">Summary of accessibility issues found</p>
+        <!-- Level 2: Expanded Card (Hidden by Default) -->
+        <div class="expanded-details">
+          <!-- Issues -->
+          <% if (data.issues.length > 0) { %>
+          <% data.issues.forEach((issue, index) => { %>
+          <div class="issue">
+            <h3><%= index + 1 %>: <%= issue.message %></h3>
+            <p><strong>Guideline:</strong> <%= issue.code.toUpperCase() %></p>
+            <p><strong>Level:</strong> <%= issue.level || 'A' %></p>
+            <% if (issue.wcag_title) { %>
+            <details>
+              <summary>WCAG Title</summary>
+              <ul>
+                <% issue.wcag_title.forEach((title) => { %>
+                <li><%= title %></li>
+                <% }) %>
+              </ul>
+            </details>
+            <% } %>
+            <% if (issue.category) { %>
+            <details>
+              <summary>Category</summary>
+              <ul>
+                <% if (Array.isArray(issue.category)) { %>
+                <% issue.category.forEach((category) => { %>
+                <li><%= category %></li>
+                <% }); %>
+                <% } else { %>
+                <li><%= issue.category %></li>
+                <% } %>
+              </ul>
+            </details>
+            <% } %>
+
+            <% if (issue.subcategory) { %>
+            <details>
+              <summary>Subcategory</summary>
+              <ul>
+                <% if (Array.isArray(issue.subcategory)) { %>
+                <% issue.subcategory.forEach((subcategory) => { %>
+                <li><%= subcategory %></li>
+                <% }); %>
+                <% } else { %>
+                <li><%= issue.subcategory %></li>
+                <% } %>
+              </ul>
+            </details>
+            <% } %>
+
+            <% if (Object.keys(issue.runnerExtras).length > 0) { 
+                                  Object.entries(issue.runnerExtras).forEach(([key, value]) => { %>
+            <p><em><%= key %>:</em> <%= value %></p>
+            <% }); } %>
+            <p><em>Impact:</em> <%= getIssueImpact(issue) %></p>
+            <p><em>Selector:</em> <%= issue.selector %></p>
+            <p><em>Context:</em> <%= issue.context %></p>
+          </div>
+          <% }); %>
+          <% } else { %>
+          <p>No accessibility issues found for this page!</p>
+          <% } %>
+        </div>
+      </div>
+      <!-- Button to Expand -->
+      <div class="expand-button" onclick="toggleDetails(this)">Expand to see details</div>
+    </div>
+    <% }); %>
+    <% } else { %>
+    <p>No accessibility check results available!</p>
+    <% } %>
+  </div>
+
+  <script>
+    function toggleDetails(button) {
+      var expandedDetails = button.parentNode.querySelector('.expanded-details');
+      if (expandedDetails.style.display === "none") {
+        expandedDetails.style.display = "block";
+        button.textContent = "Collapse";
+      } else {
+        expandedDetails.style.display = "none";
+        button.textContent = "Expand to see details";
+      }
+    }
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

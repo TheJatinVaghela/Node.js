@@ -1,0 +1,118 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessibility Testing</title>
+  <style>
+    /* CSS styles for loading screen */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    #loadingIndicator {
+      border: 8px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 8px solid #3498db;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Styles for form and result section */
+    #urlForm {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      width: 300px;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    button[type="submit"] {
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #result {
+      display: none;
+      width: 300px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      box-sizing: border-box;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Accessibility Testing</h1>
+  <a href="https://a4d2-27-109-15-190.ngrok-free.app/sample">sample page</a>
+  <form id="urlForm" action="/check" method="POST">
+    <input type="text" name="url" placeholder="Enter website URL" required>
+    <button type="submit">Check Accessibility</button>
+  </form>
+  <div id="loadingIndicator" style="display: none;"></div>
+  <div id="result">
+    <p>Testing in progress...</p>
+  </div>
+
+  <script>
+    document.getElementById('urlForm').addEventListener('submit', function() {
+      // Show loading indicator when form is submitted
+      document.getElementById('loadingIndicator').style.display = 'block';
+
+      // Hide result section
+      document.getElementById('result').style.display = 'none';
+    });
+
+    // Function to handle response from server
+    function handleResult(response) {
+      // Hide loading indicator
+      document.getElementById('loadingIndicator').style.display = 'none';
+
+      // Display result message
+      const resultDiv = document.getElementById('result');
+      resultDiv.style.display = 'block';
+      resultDiv.innerHTML = response;
+    }
+  </script>
+</body>
+
+</html>
